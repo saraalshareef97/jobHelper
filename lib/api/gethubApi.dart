@@ -12,7 +12,7 @@ Future<List<Job>> fetchJob() async {
     // If the call to the server was successful, parse the JSON
     List responseJson = json.decode(response.body);
     print(responseJson);
-    return responseJson.map((m) => new Job.fromJson(m)).toList();
+    return responseJson.map<Job>((m) => new Job.fromJson(m)).toList();
   } else {
     // If that call was not successful, throw an error.
     throw Exception('Failed to load post');

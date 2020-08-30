@@ -1,4 +1,4 @@
-class MatchedObjectDescriptor {
+class JobGov {
   String id;
   String companyLogo;
   String jobTitle;
@@ -7,7 +7,7 @@ class MatchedObjectDescriptor {
   String postDate;
   String linkToJob;
 
-  MatchedObjectDescriptor(
+  JobGov(
       {this.id,
       this.companyLogo,
       this.jobTitle,
@@ -16,39 +16,14 @@ class MatchedObjectDescriptor {
       this.postDate,
       this.linkToJob});
 
-  factory MatchedObjectDescriptor.fromJson(Map<String, dynamic> json) {
-    return MatchedObjectDescriptor(
-        id: json['PositionID'],
-        // companyLogo: json['company_logo'].toString(),
-        jobTitle: json['PositionTitle'].toString(),
-        companyName: json['OrganizationName'].toString(),
-        location: json['PositionLocationDisplay'].toString(),
-        postDate: json['PublicationStartDate'].toString(),
-        linkToJob: json['PositionURI'].toString());
-  }
-}
-
-class SearchResultItems {
-  MatchedObjectDescriptor matchedObjectDescriptor;
-
-  SearchResultItems({this.matchedObjectDescriptor});
-
-  factory SearchResultItems.fromJson(Map<String, dynamic> json) {
-    return SearchResultItems(
-        matchedObjectDescriptor: json['MatchedObjectDescriptor']);
-  }
-}
-
-class SearchResult {
-  List<SearchResultItems> searchResulItemsList;
-
-  SearchResult({this.searchResulItemsList});
-
-  factory SearchResult.fromJson(Map<String, dynamic> parsedJson) {
-    var list = parsedJson['SearchResult'] as List;
-    List<SearchResultItems> searchResult =
-        list.map((i) => SearchResultItems.fromJson(i)).toList();
-
-    return SearchResult(searchResulItemsList: searchResult);
+  factory JobGov.fromJson(Map<String, dynamic> json) {
+    return JobGov(
+        id: json['id'],
+        companyLogo: json['company_logo'].toString(),
+        jobTitle: json['title'].toString(),
+        companyName: json['company'].toString(),
+        location: json['location'].toString(),
+        postDate: json['created_at'].toString(),
+        linkToJob: json['url'].toString());
   }
 }

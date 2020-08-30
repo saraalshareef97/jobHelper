@@ -44,7 +44,7 @@ class FetchingJobsGovState extends State<FetchingJobsGov> {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          // Return a circular progress indecator until all the data are finished fetching from the API
+          // Return a circular progress indecator until all the data is finished fetching from the API
           return Center(child: CircularProgressIndicator());
         },
       ),
